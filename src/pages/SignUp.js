@@ -7,7 +7,7 @@ export default function SignUp() {
   const navigate = useNavigate()
   const handleSubmit= async(e)=>{ 
     e.preventDefault()
-    const response = await fetch("http://localhost:3001/api/create_user",{
+    const response = await fetch("http://3.108.220.147:3001/api/create_user",{
       method:"POST",
       headers:{
         'Content-Type':'application/json'

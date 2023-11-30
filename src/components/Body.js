@@ -7,7 +7,7 @@ export default function Body() {
   const [foodItems, setFoodItems] = useState([])
 
   useEffect( ()=>{
-    let res =  fetch('http://localhost:3001/api/food_data',{
+    let res =  fetch('http://3.108.220.147:3001/api/food_data',{
       method:"GET",
       headers:{
         'Content-Type':'application/json'

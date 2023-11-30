@@ -18,7 +18,7 @@ export default function Navbar() {
   let user = useUser()
   let dispatch = useDispatchCart()
   const checkOut = async()=>{
-    let response = await fetch("http://localhost:3001/api/create_order",{
+    let response = await fetch("http://3.108.220.147:3001/api/create_order",{
       method: 'POST',
       headers:{
         'Content-Type':'application/json'

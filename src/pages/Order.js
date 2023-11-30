@@ -7,7 +7,7 @@ export default function Order() {
   const data = useUser()
   useEffect(()=>{
     if(data?.email)
-    fetch('http://localhost:3001/api/my_orders?'+new URLSearchParams({
+    fetch('http://3.108.220.147:3001/api/my_orders?'+new URLSearchParams({
       email:data.email,
   }),{
       method:"GET",

@@ -2,12 +2,13 @@ import React,{useEffect, useState} from 'react'
 import { useUser } from '../components/ContextReducer'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export default function Order() {
   const [orders, setOrders] = useState([])
   const data = useUser()
   useEffect(()=>{
     if(data?.email)
-    fetch('http://3.108.220.147:3001/api/my_orders?'+new URLSearchParams({
+    fetch(`${API_ENDPOINT}/api/my_orders?`+new URLSearchParams({
       email:data.email,
   }),{
       method:"GET",

@@ -1,12 +1,15 @@
 import React,{useState} from 'react'
-import { useDispatchCart, useCart } from './ContextReducer'
+import { useDispatchCart, useUser } from './ContextReducer'
+import {addToCartApi} from '../utils/Cart'
 export default function Card({food_item}) {
   const authToken = localStorage.getItem('authToken')
   const [quantity, setQuantity] = useState(1)
   const [type, setType] = useState('')
   let dispatch = useDispatchCart()
+  const data = useUser()
   const addToCart=async()=>{
     await dispatch({type:'ADD',food_item})
+    addToCartApi(data.email, food_item)
   }
   return (
     <div className='flex flex-col w-60 rounded-lg m-2' >

@@ -1,13 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import Card from './Card'
 import Carousel from './Carousel'
-
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export default function Body() {
   const [foodCat, setFoodCat] = useState([])
   const [foodItems, setFoodItems] = useState([])
 
   useEffect( ()=>{
-    let res =  fetch('http://3.108.220.147:3001/api/food_data',{
+    let res =  fetch(`${API_ENDPOINT}/api/food_data`,{
       method:"GET",
       headers:{
         'Content-Type':'application/json'

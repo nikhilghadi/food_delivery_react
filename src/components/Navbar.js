@@ -5,6 +5,7 @@ import Search from './Search'
 import { useCart, useUser, useDispatchCart } from './ContextReducer'
 import Modal from '../Modal'
 import Cart from '../pages/Cart'
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export default function Navbar() {
   const [viewCart, setViewCart] = useState(false)
   const list_class = 'p-3 cursor-pointer hover:bg-red-200 grid place-content-center hover:border-2'
@@ -18,7 +19,7 @@ export default function Navbar() {
   let user = useUser()
   let dispatch = useDispatchCart()
   const checkOut = async()=>{
-    let response = await fetch("http://3.108.220.147:3001/api/create_order",{
+    let response = await fetch(`${API_ENDPOINT}/api/create_order`,{
       method: 'POST',
       headers:{
         'Content-Type':'application/json'

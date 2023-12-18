@@ -1,14 +1,17 @@
 import React,{useState} from 'react'
 import Logo from '../assets/logo.jpg'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatchUser } from '../components/ContextReducer'
+import { useDispatchUser, useDispatchCart } from '../components/ContextReducer'
+import {fetchCartItems} from '../utils/Cart'
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export default function Login() {
   const [credentials, setCredentials] = useState({email:'',password:''})
   const navigate = useNavigate()
   let dispatch = useDispatchUser()
+  let cartDispatch = useDispatchCart()
   const handleSubmit= async(e)=>{ 
     e.preventDefault()
-    const response = await fetch("http://3.108.220.147:3001/api/login",{
+    const response = await fetch(`${API_ENDPOINT}/api/login`,{
       method:"POST",
       headers:{
         'Content-Type':'application/json'
@@ -20,8 +23,10 @@ export default function Login() {
       // alert("Done")
       dispatch({type:'ADD',json})
       localStorage.setItem('authToken',json.authToken)
+      fetchCartItems(json.email).then((res)=>{
+        cartDispatch({type:'ADD_MANY',food_item:res.data.cart_items.cart_items})
+      })
       navigate('/')
-
     }else{
       alert(json.message)
     }

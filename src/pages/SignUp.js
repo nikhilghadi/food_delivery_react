@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
 import Logo from '../assets/logo.jpg'
 import { Link, useNavigate } from 'react-router-dom'
-
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export default function SignUp() {
   const [credentials, setCredentials] = useState({name:'',email:'',password:'',location:''})
   const navigate = useNavigate()
   const handleSubmit= async(e)=>{ 
     e.preventDefault()
-    const response = await fetch("http://3.108.220.147:3001/api/create_user",{
+    const response = await fetch(`${API_ENDPOINT}/api/create_user`,{
       method:"POST",
       headers:{
         'Content-Type':'application/json'

@@ -8,6 +8,9 @@ const reducer =(state, action)=>{
     case 'ADD':
       return [...state,action.food_item]
       break;
+    case 'ADD_MANY':
+        return action.food_item
+        break;
     case 'REMOVE':
       let newArr = [...state]
       newArr.splice(action.index,1)

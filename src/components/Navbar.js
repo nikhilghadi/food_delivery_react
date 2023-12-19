@@ -30,7 +30,6 @@ export default function Navbar() {
         order_date: new Date().toDateString()
       })
     });
-    debugger
     const json = await response.json()
     if (json.success){
       dispatch({type:'DROP'})

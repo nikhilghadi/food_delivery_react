@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React, { useEffect, useContext } from 'react';
 import './App.css';
 import Home from './pages/Home';
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
@@ -8,21 +8,14 @@ import Cart from './pages/Cart';
 import Order from './pages/Order';
 import { CartProvider } from './components/ContextReducer';
 import { UserProvider} from './components/ContextReducer'
+import {VerifyToken} from './utils/User'
+import { useDispatchUser } from './components/ContextReducer'
+import Index from './pages/Index';
 function App() {
   return (
     <CartProvider>
       <UserProvider>
-      <BrowserRouter>
-        <div>
-          <Routes>
-            <Route path={"/"} element={<Home/>}/>
-            <Route path={"/cart"} element={<Cart/>}/>
-            <Route path={"/orders"} element={<Order/>}/>
-            <Route path={"/login"} element={<Login/>}/>
-            <Route path={"/sign_up"} element={<SignUp/>}/>
-          </Routes>
-        </div>
-      </BrowserRouter>
+        <Index/>
       </UserProvider>
     </CartProvider>
   );
